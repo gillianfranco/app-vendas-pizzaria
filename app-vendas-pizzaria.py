@@ -12,7 +12,7 @@ def mostrar_menu():
 def valida_sabor(mensagem):
     while True:
         sabor = input(mensagem)
-        if sabor != 'PS' and sabor != 'ps' and sabor != 'Ps' and sabor != 'PD' and sabor != 'pd' and sabor != 'Pd':
+        if sabor.lower() != 'ps' and sabor.lower() != 'pd':
             print('Sabor inválido! Tente novamente.\n')
             continue
         break
@@ -22,7 +22,7 @@ def valida_sabor(mensagem):
 def valida_tamanho(mensagem):
     while True:
         tamanho = input(mensagem)
-        if (tamanho not in 'Pp') and (tamanho not in 'Mm') and (tamanho not in 'Gg'):
+        if tamanho.lower() != 'p' and tamanho.lower() != 'm' and tamanho.lower() != 'g':
             print('Tamanho inválido! Tente novamente.\n')
             continue
         break
@@ -30,17 +30,17 @@ def valida_tamanho(mensagem):
 
 # Calcula o valor total que deve ser pago conforme as pizzas escolhidas pelo usuário
 def calcula_valor_total(sabor, tamanho):
-    if sabor == 'PS' or sabor == 'ps' or sabor == 'Ps':
-        if tamanho in 'Pp':
+    if sabor.lower() == 'ps':
+        if tamanho.lower() == 'p':
             total = 30
-        elif tamanho in 'Mm':
+        elif tamanho.lower() == 'm':
             total = 45
         else:
             total = 60
-    else:
-        if tamanho in 'Pp':
+    elif sabor.lower() == 'pd':
+        if tamanho.lower() == 'p':
             total = 34
-        elif tamanho in 'Mm':
+        elif tamanho.lower() == 'm':
             total = 48
         else:
             total = 66
@@ -50,7 +50,7 @@ def calcula_valor_total(sabor, tamanho):
 def valida_saida(mensagem):
     while True:
         opcao = input(mensagem)
-        if (opcao not in 'Ss') and (opcao not in 'Nn'):
+        if opcao.lower() != 's' and opcao.lower() != 'n':
             print('Escolha Inválida! Tente novamente.')
             continue
         break
@@ -74,7 +74,7 @@ while True:
 
     # Verifica se o usuário deseja sair ou continuar utilizando o sistema
     continuar = valida_saida('\nDeseja mais alguma coisa? [S/N]: ')
-    if continuar in 'Nn':
+    if continuar.lower() == 'n':
         print('\nFinalizando pedido...')
         break
 
